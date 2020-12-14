@@ -1,20 +1,18 @@
 import { render } from '@testing-library/react';
 import React,{Component} from 'react';
-import './App.css';
-import Todos from './Components/Todos';
 
 
-class App extends Component {
+
+class Todos extends Component {
   render(){
 
   
     return (
     <div className="App">
-      <Todos/>
-      <h1>Salim</h1>
+      <h1>Todos</h1>
     </div>
   );
   }
 }
 
-export default App;
+export default Todos;
