@@ -4,14 +4,21 @@ import Item from './Item';
 import PropTypes from 'prop-types';
 
 class Todos extends Component {
-  render(){
 
+  complete =() =>
+  {
+    console.log(this.props.it.id);
+  }
+
+  render(){
+  
   
     return (
       
     this.props.fisal.map((tache)=>
     (
-        <Item key={tache.id} it={tache}/>
+        <Item key={tache.id} it={tache} markcomplete = {this.props.complete}/>
+        
     ))
    
     );
@@ -19,7 +26,7 @@ class Todos extends Component {
   }
 }
 
-this.PropTypes =
+Todos.propTypes =
 {
    fisal : PropTypes.array.isRequired
 }

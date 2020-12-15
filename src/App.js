@@ -26,14 +26,16 @@ class App extends Component {
   };
 
 
-
+complet = (id) =>{
+  console.log(id);
+}
 
   render(){
 
   
     return (
     <div className="App">
-      <Todos fisal={this.state.todos}/>
+      <Todos fisal={this.state.todos} complete = {this.complet}/>
       <h1>Salim {this.state.todos[0].title}</h1>
     </div>
   );
