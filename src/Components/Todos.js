@@ -10,6 +10,11 @@ class Todos extends Component {
     console.log(this.props.it.id);
   }
 
+  delete = ()=>
+  {
+    console.log(this.props.it.id);
+  }
+
   render(){
   
   
@@ -17,7 +22,7 @@ class Todos extends Component {
       
     this.props.fisal.map((tache)=>
     (
-        <Item key={tache.id} it={tache} markcomplete = {this.props.complete}/>
+        <Item key={tache.id} it={tache} markcomplete = {this.props.complete} delete = {this.props.delete}/>
         
     ))
    

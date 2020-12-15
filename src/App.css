@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.Todo{
+  padding-left: 130px;
+  text-align: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

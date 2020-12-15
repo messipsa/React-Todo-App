@@ -27,15 +27,40 @@ class App extends Component {
 
 
 complet = (id) =>{
+ this.setState({todo : this.state.todos.map((tache)=>
+  {
+    if(id===tache.id)
+    {
+      tache.completed = !tache.completed; 
+    }
+    return tache;
+  })
+});
+}
+
+delete = (id) =>
+{
+  /*console.log(id);
+  this.setState({todo : this.state.todos.map((tache)=>
+    {
+      if(id===tache.id)
+      {
+
+      }
+      return tache;
+    })});*/
+  this.setState({ todos : [...this.state.todos.filter(tache=> id!==tache.id)]});
   console.log(id);
 }
+
+
 
   render(){
 
   
     return (
     <div className="App">
-      <Todos fisal={this.state.todos} complete = {this.complet}/>
+      <Todos fisal={this.state.todos} complete = {this.complet} delete={this.delete}/>
       <h1>Salim {this.state.todos[0].title}</h1>
     </div>
   );
