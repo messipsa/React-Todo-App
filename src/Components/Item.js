@@ -18,6 +18,8 @@ class Item extends Component {
     else
     {
       return{
+        padding : '10px',
+        backgroundColor : '#f4f4f4',
         textDecoration : 'none'
       }
     }

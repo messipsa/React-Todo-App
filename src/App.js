@@ -1,7 +1,9 @@
 import { render } from '@testing-library/react';
 import React,{Component} from 'react';
 import './App.css';
+import Header from './Components/layout/Header';
 import Todos from './Components/Todos';
+import Add from './Components/Add';
 
 
 class App extends Component {
@@ -60,11 +62,19 @@ delete = (id) =>
   
     return (
     <div className="App">
+      <div className="container">
+      <Header />
+      <Add />
       <Todos fisal={this.state.todos} complete = {this.complet} delete={this.delete}/>
-      <h1>Salim {this.state.todos[0].title}</h1>
+      
+      <h1>Salim </h1>
+      </div>
+      
     </div>
   );
   }
 }
+
+
 
 export default App;
