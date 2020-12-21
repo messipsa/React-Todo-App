@@ -1,47 +1,58 @@
 import { render } from '@testing-library/react';
 import React,{Component} from 'react';
 import {BrowserRouter as Router , Route} from 'react-router-dom';
+import {v1 as uuid} from "uuid"; 
 import './App.css';
 import Header from './Components/layout/Header';
 import Todos from './Components/Todos';
 import Add from './Components/Add';
-import {v5 as uuid} from "uuid";
+import About from './Components/pages/About';
+import axios from 'axios';
+
 //import { Router } from 'react-router-dom';
 
 class App extends Component {
   state = {
-    todos : [
-      {
-         id:uuid.v5,
+    todos : []
+     /* {
+         id:uuid(),
          title : 'Tp Sfsd',
          completed:false,
       },
       {
-        id:uuid.v5,
+        id:uuid(),
          title : 'Cours Thp',
          completed:false,
       },
       {
-        id:uuid.v5,
+        id:uuid(),
         title : 'Learn React',
         completed:true,
-      },
-    ]
+      },*/
+   
   };
+
+
+  componentDidMount()
+  {
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=7')
+     .then(response => this.setState({todos : response.data}))
+    
+  }
 
 
 complet = (id) =>{
   
- this.setState({todo : this.state.todos.map((tache)=>
+ this.setState({todo : this.state.todos.map((tacheee)=>
   {
     console.log(id);
   
-    if(id===tache.id )
+    if(id===tacheee.id )
     {
-      tache.completed = !tache.completed; 
+      tacheee.completed = !tacheee.completed; 
      
     }
-    return tache;
+    return tacheee;
   })
 });
 }
@@ -57,7 +68,8 @@ delete = (id) =>
       }
       return tache;
     })});*/
-  this.setState({ todos : [...this.state.todos.filter(taches=> id!==taches.id)]});
+  this.setState({ todos : [...this.state.todos.filter((taches)=>
+     id!==taches.id)]});
   console.log(id);
 }
 
@@ -65,7 +77,7 @@ delete = (id) =>
 addtodo = (title )=>
 {
   const tachee = {
-    id : uuid.v5,
+    id : uuid(),
     title : title,
     completed : false
   }
@@ -82,10 +94,17 @@ addtodo = (title )=>
     <div className="App">
       <div className="container">
       <Header />
-      <Add addtodo = {this.addtodo}/>
+      <Route exact path="/" render={props=>(
+        <React.Fragment>
+           <Add addtodo = {this.addtodo}/>
       <Todos fisal={this.state.todos} complete = {this.complet} delete={this.delete}/>
       
       <h1>Salim </h1>
+        </React.Fragment>
+      )
+      }/>
+      
+      <Route path="/*" component={About}/>
       </div>
       
     </div>
