@@ -68,6 +68,7 @@ delete = (id) =>
       }
       return tache;
     })});*/
+    axios.delete(`'https://jsonplaceholder.typicode.com/todos/${id}`);
   this.setState({ todos : [...this.state.todos.filter((taches)=>
      id!==taches.id)]});
   console.log(id);
@@ -76,12 +77,20 @@ delete = (id) =>
 
 addtodo = (title )=>
 {
-  const tachee = {
+  /*const tachee = {
     id : uuid(),
     title : title,
     completed : false
+  }*/
+  axios.post('https://jsonplaceholder.typicode.com/todos',
+  {
+    title,
+    completed : false
   }
-  this.setState({todos : [...this.state.todos , tachee]});
+  )
+   .then(response => this.setState({todos :
+     [...this.state.todos , response.data]}));
+  
   console.log(title);
 }
 

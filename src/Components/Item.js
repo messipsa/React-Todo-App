@@ -58,7 +58,9 @@ class Item extends Component {
 
 
 Item.propTypes = {
-    it:PropTypes.object.isRequired
+    it:PropTypes.object.isRequired,
+    markcomplete :  PropTypes.func.isRequired,
+    delete :  PropTypes.func.isRequired
 }
 
 const itemStyle = {backgroundColor:'#f4f4f4'}

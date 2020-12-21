@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import React,{Component} from 'react';
+import Proptypes from 'prop-types';
 
 class Add extends Component{
 
@@ -40,6 +41,10 @@ class Add extends Component{
             
         );
     }
+}
+
+Add.Proptypes = {
+    addtodo :  PropTypes.func.isRequired
 }
 
 export default Add;
